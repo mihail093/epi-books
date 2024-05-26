@@ -1,0 +1,17 @@
+.myCard{
+    width: 320px;
+}
+.myImage{
+    width: 200px;
+    height: 200px;
+}
+.myTitle{
+    height: 140px;
+}
+.myCardBody{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 280px;
+    background-color: #f5efc1;
+}
