@@ -1,23 +1,27 @@
-import React from 'react';
-import {Container, Row, Col, Card, Button} from 'react-bootstrap';
-import './AllTheBooks.css';
+import React, { useState } from 'react';
+import {Container, Row, Col, Form} from 'react-bootstrap';
+import SingleBook from './SingleBook';
 
 export default function AllTheBooks(props) {
+
+  const [search, setSearch] = useState('');
+
   return (
     <Container>
-        <Row>
-            {props.books.map(book => (
-                <Col>
-                    <Card className='my-3 myCard'>
-                        <Card.Img className='myImage' variant="top" src={book.img} />
-                        <Card.Body className='myCardBody'>
-                            <Card.Title className='myTitle'>{book.title}</Card.Title>
-                            <Button variant="success">{book.price} €</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            ))}
-        </Row>
+      <Row>
+        <Col>
+          <Form.Group className="mb-3">
+            <Form.Control type="search" placeholder="Find your book. . ." value={search} onChange={(e) => setSearch(e.target.value)}/>
+          </Form.Group>
+        </Col>
+      </Row>
+      <Row>
+          {props.books
+          .filter(book => book.title.toLowerCase().includes(search))
+          .map(book => (
+              <SingleBook key={book.asin} book={book} />
+          ))}
+      </Row>
     </Container>
   )
 }

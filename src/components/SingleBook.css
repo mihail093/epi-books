@@ -1,0 +1,21 @@
+.myCard{
+    width: 240px;
+    height: 620px;
+}
+.myImage{
+    height: 310px;
+}
+.myCardBody{
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.myTitle{
+    width: 200px;            
+    overflow: hidden;         
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 5;    
+    text-overflow: ellipsis;  
+}
