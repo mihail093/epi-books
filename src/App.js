@@ -10,28 +10,36 @@ import Scifi from './books/scifi.json';
 import AllTheBooks from './components/AllTheBooks';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { ThemeContext } from './mudules/Contexts';
 
 function App() {
 
   let [type, setType] = useState('Fantasy');
+  const [search, setSearch] = useState('');
+  const handleChange = (e) => setSearch(e.target.value);
+  let [theme, setTheme] = useState('light');
 
   return (
     <>
-      <MyNav />
-      <Welcome />
-      <div className='container d-flex justify-content-between my-3'>
-        <Button variant="light" onClick={() => setType('Fantasy')}>FANTASY</Button>
-        <Button variant="light" onClick={() => setType('History')}>HISTORY</Button>
-        <Button variant="light" onClick={() => setType('Horror')}>HORROR</Button>
-        <Button variant="light" onClick={() => setType('Romance')}>ROMANCE</Button>
-        <Button variant="light" onClick={() => setType('Scifi')}>SCIFI</Button>
-      </div>
-      {type === 'Fantasy' && <AllTheBooks books={Fantasy} />}
-      {type === 'History' && <AllTheBooks books={History} />}
-      {type === 'Horror' && <AllTheBooks books={Horror} />}
-      {type === 'Romance' && <AllTheBooks books={Romance} />}
-      {type === 'Scifi' && <AllTheBooks books={Scifi} />}
-      <MyFooter />
+      <ThemeContext.Provider value={[theme, setTheme]}>
+        <MyNav search={search} handleChange={handleChange}/>
+        <div className={theme + "mode"}>
+          <Welcome />
+          <div className='container d-flex justify-content-between my-3'>
+            <Button variant={theme} onClick={() => setType('Fantasy')}>FANTASY</Button>
+            <Button variant={theme} onClick={() => setType('History')}>HISTORY</Button>
+            <Button variant={theme} onClick={() => setType('Horror')}>HORROR</Button>
+            <Button variant={theme} onClick={() => setType('Romance')}>ROMANCE</Button>
+            <Button variant={theme} onClick={() => setType('Scifi')}>SCIFI</Button>
+          </div>
+          {type === 'Fantasy' && <AllTheBooks books={Fantasy} search={search} />}
+          {type === 'History' && <AllTheBooks books={History} search={search} />}
+          {type === 'Horror' && <AllTheBooks books={Horror} search={search} />}
+          {type === 'Romance' && <AllTheBooks books={Romance} search={search} />}
+          {type === 'Scifi' && <AllTheBooks books={Scifi} search={search} />}
+          <MyFooter />
+        </div>
+      </ThemeContext.Provider>
     </>
   );
 }

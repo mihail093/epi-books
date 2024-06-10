@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import {Container, Row, Col, Form} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import SingleBook from './SingleBook';
+import CommentArea from './CommentArea';
 
 export default function AllTheBooks(props) {
 
-  const [search, setSearch] = useState('');
+  const [selected, setSelected] = useState(false);
 
   return (
     <Container>
       <Row>
-        <Col>
-          <Form.Group className="mb-3">
-            <Form.Control type="search" placeholder="Find your book. . ." value={search} onChange={(e) => setSearch(e.target.value)}/>
-          </Form.Group>
+        <Col md={9}>
+          <Row>
+            {props.books
+            .filter(book => book.title.toLowerCase().includes(props.search))
+            .map(book => (
+                <SingleBook key={book.asin} book={book} selected={selected} setSelected={setSelected}/>
+            ))}
+          </Row>
         </Col>
-      </Row>
-      <Row>
-          {props.books
-          .filter(book => book.title.toLowerCase().includes(search))
-          .map(book => (
-              <SingleBook key={book.asin} book={book} />
-          ))}
+        <Col md={3}>
+          <CommentArea asin={selected}/>
+        </Col>
       </Row>
     </Container>
   )

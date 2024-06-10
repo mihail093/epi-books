@@ -1,18 +1,19 @@
 .myCard{
     width: 240px;
-    height: 620px;
+    height: 640px;
 }
 .myImage{
-    height: 310px;
+    height: 320px;
 }
 .myCardBody{
-    height: 310px;
+    height: 320px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .myTitle{
-    width: 200px;            
+    width: 200px;
+    height: 280px;            
     overflow: hidden;         
     display: -webkit-box;
     -webkit-box-orient: vertical; 

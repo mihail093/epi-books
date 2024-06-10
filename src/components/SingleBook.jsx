@@ -1,16 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import {Col, Card, Button} from 'react-bootstrap';
 import './SingleBook.css';
 import CommentArea from './CommentArea';
+import { ThemeContext } from '../mudules/Contexts';
 
-export default function SingleBook({ book }) {
+export default function SingleBook({ book, selected, setSelected }) {
 
-    const [selected, setSelected] = useState(false);
+    let [themeCtx] = useContext(ThemeContext);
 
   return (
     <>
       <Col>
-          <Card className='my-3 myCard' style={{border: selected ? '2px solid red' : 'none'}} onClick={() => setSelected(!selected)}>
+          <Card 
+            bg={themeCtx} 
+            data-bs-theme={themeCtx} 
+            className='my-3 myCard text-center' 
+            style={{border: selected === book.asin ? '3px solid red' : 'none'}} 
+            onClick={() => {if(selected === book.asin) {setSelected(false)} else{setSelected(book.asin)}}}
+          >
               <Card.Img className='myImage' variant="top" src={book.img} />
               <Card.Body className='myCardBody'>
                   <Card.Title className='myTitle'>{book.title}</Card.Title>
@@ -18,7 +25,6 @@ export default function SingleBook({ book }) {
               </Card.Body>
           </Card>
       </Col>
-      {selected && <Col sm={12}><CommentArea asin={book.asin}/></Col>}
     </>
   )
 }
