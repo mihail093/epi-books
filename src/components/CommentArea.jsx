@@ -31,7 +31,7 @@ export default function CommentArea({ asin }) {
     }, [add, asin])
 
   return (
-    <div className='my-3 position-sticky top-0'>
+    <div className='my-3'>
         <h3>Comment Area:</h3>
         {spinner && <Spinner animation="border" variant="warning" />}
         {alertError && <Alert variant='danger'>Loading error</Alert>}

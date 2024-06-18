@@ -1,6 +1,8 @@
 .lightmode{
-    background-color: antiquewhite !important;
+    background-color: rgb(250, 235, 215) !important;
+    padding-top: 5%;
 }
 .darkmode{
     background-color: rgba(54, 55, 34, 0.714) !important;
+    padding-top: 5%;
 }

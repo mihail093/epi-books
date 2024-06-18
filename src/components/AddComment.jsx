@@ -50,8 +50,9 @@ export default function AddComment({ asin, add, setAdd }) {
   return (
     <div className='mt-3'>
       <InputGroup as="form" onSubmit={handleSubmit}>
-        <InputGroup.Text>Add a comment</InputGroup.Text>
         <Form.Control
+          className='w-100'
+          placeholder='Add a comment...'
           as="textarea"
           aria-label="With textarea"
           value={textComment}

@@ -14,7 +14,7 @@ function RangeReview({ reviewValue, setReviewValue }) {
   };
 
   return (
-    <div className='ms-3'>
+    <div className='ms-3 w-100'>
       <Form.Range
         className='mt-2'
         min={1}
@@ -23,7 +23,7 @@ function RangeReview({ reviewValue, setReviewValue }) {
         value={reviewValue}
         onChange={handleChange}
       />
-      <p className='w-100'>
+      <p>
         Rating: 
         {Array.from({ length: reviewValue }, (_, index) => (
           <span className='p-1' key={index}>{star}</span>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import SingleBook from './SingleBook';
-import CommentArea from './CommentArea';
 
 export default function AllTheBooks(props) {
 
@@ -10,17 +9,14 @@ export default function AllTheBooks(props) {
   return (
     <Container>
       <Row>
-        <Col md={9}>
+        <Col md={12}>
           <Row>
             {props.books
-            .filter(book => book.title.toLowerCase().includes(props.search))
+            .filter(book => book.title.toLowerCase().includes(props.search.toLowerCase()))
             .map(book => (
-                <SingleBook key={book.asin} book={book} selected={selected} setSelected={setSelected}/>
+                <SingleBook key={book.asin} book={book} selected={selected} setSelected={setSelected} />
             ))}
           </Row>
-        </Col>
-        <Col md={3}>
-          <CommentArea asin={selected}/>
         </Col>
       </Row>
     </Container>
