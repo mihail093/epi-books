@@ -18,10 +18,10 @@ export default function MyNav({ search, handleChange}) {
                 <Nav className="me-auto">
                     <Link className="nav-link" to="/">Home</Link>
                     <NavDropdown title="Category" id="basic-nav-dropdown">
-                        <Link className="nav-link" to="/category/history" data-testid='category-history'>History</Link>
-                        <Link className="nav-link" to="/category/horror" data-testid='category-horror'>Horror</Link>
-                        <Link className="nav-link" to="/category/romance" data-testid='category-romance'>Romance</Link>
-                        <Link className="nav-link" to="/category/scifi" data-testid='category-scifi'>Scifi</Link>
+                        <Link className="nav-link" to="/category/history">History</Link>
+                        <Link className="nav-link" to="/category/horror">Horror</Link>
+                        <Link className="nav-link" to="/category/romance">Romance</Link>
+                        <Link className="nav-link" to="/category/scifi">Scifi</Link>
                         <Link className="nav-link" to="/">Fantasy</Link>
                     </NavDropdown>
                 </Nav>
